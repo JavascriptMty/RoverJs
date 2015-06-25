@@ -1,0 +1,11 @@
+{
+  "name": "rover",
+  "version": "0.0.1",
+  "description": "WiFi controlled Rover",
+  "main": "io.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "esauOp",
+  "license": "ISC"
+}
