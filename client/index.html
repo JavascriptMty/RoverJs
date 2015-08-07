@@ -6,10 +6,19 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</head>
 	<body>
-	<div>
-		<iframe src="http://10.10.5.42:8000" frameborder="0" width="640" height="480"></iframe>
+	<div class="row">
+	<div class="col-sm-6">
+		<iframe src="http://robotcos.local:8000" frameborder="0" width="640" height="480"></iframe>
+	</div>
+	<div class="col-sm-6">
+		
+		<label id="temp" style="font-size: 3em;"></label>
+	</div>
 	</div>
 	<figure id="nespad" style="position: relative; margin-top: 80px;">
 		<div class="cord"></div>
@@ -46,5 +55,19 @@
 		</section>
 	</figure>
 	<script src="js.js"></script>
+
+	<script>
+      var socket = io.connect('http://robotcos.local:3000'); // cambia localhost por IP si accesas remoto.
+      socket.on('thermistor', function (data) {
+        console.log(data);
+        
+        var a = $('#temp');
+        a.text('Temp: ' + data);
+      });
+
+      function isNumeric(n) {
+          return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+    </script>
 	</body>
 </html>
